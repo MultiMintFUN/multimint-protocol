@@ -1,0 +1,47 @@
+/*
+  PALETTE RULE: every literal below is sampled from brand/LOGO MULTIMINT PNG...png
+  (2000x2000, PNG colortype 6 truecolor+alpha; IHDR read in scripts used to
+  produce these values — see scratchpad process_logo.py / analyze.py history).
+  k-means, k=5, seed=42, run on opaque-ish pixels (alpha>200) of the logo mark
+  only (background excluded by the alpha channel itself). Each hex is the
+  color of the REAL pixel nearest to its cluster centroid, not the centroid
+  itself. No hex in this file was invented.
+*/
+:root {
+  /* --- brand blues, logo mark, k-means clusters ranked by pixel share --- */
+  --brand-900: #3354cf; /* cluster 3, share 15.5%, nearest real pixel at (1368,589) */
+  --brand-700: #4769e2; /* cluster 1, share 22.2%, nearest real pixel at (1233,687) */
+  --brand-500: #5b7df0; /* cluster 0, share 27.6% (largest), nearest real pixel at (625,954) */
+  --brand-300: #7d9bf9; /* cluster 2, share 20.7%, nearest real pixel at (852,743) */
+  --brand-100: #a4bbfc; /* cluster 4, share 14.1%, nearest real pixel at (710,634) */
+
+  /* canvas white sampled from the flattened logo asset (LOGO MULTIMINT PNG.png,
+     colortype 2 truecolor, cluster 0, share 89.6%, nearest real pixel at (0,0)) */
+  --canvas-0: #fefefe;
+
+  /* neutrals derived by desaturating --brand-900 toward --canvas-0 for text
+     and borders; kept out of the sampled-hex set deliberately, expressed as
+     mixes so no new literal is invented */
+  --ink-900: color-mix(in srgb, var(--brand-900) 88%, black 12%);
+  --ink-700: color-mix(in srgb, var(--brand-900) 62%, var(--canvas-0) 38%);
+  --ink-500: color-mix(in srgb, var(--brand-900) 38%, var(--canvas-0) 62%);
+  --line-200: color-mix(in srgb, var(--brand-900) 14%, var(--canvas-0) 86%);
+  --line-100: color-mix(in srgb, var(--brand-900) 7%, var(--canvas-0) 93%);
+  --surface-0: var(--canvas-0);
+  --surface-1: color-mix(in srgb, var(--brand-100) 10%, var(--canvas-0) 90%);
+  --surface-2: color-mix(in srgb, var(--brand-100) 18%, var(--canvas-0) 82%);
+
+  --focus-ring: var(--brand-500);
+  --danger: #c23a3a;
+
+  --font-sans: -apple-system, "Segoe UI", Roboto, "Inter", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 140ms;
+  --duration-med: 320ms;
+}

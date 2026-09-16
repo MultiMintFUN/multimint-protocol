@@ -1,0 +1,11 @@
+{
+  "name": "multimint",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "gates": "node scripts/gates.test.js",
+    "serve": "node scripts/serve.js"
+  }
+}
